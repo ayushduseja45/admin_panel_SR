@@ -1,5 +1,5 @@
-import { Navbar } from "../Component/Navbar";
-import { Sidebar } from "../Component/Sidebar";
+import Navbar from "../Component/Navbar";
+import Sidebar  from "../Component/Sidebar";
 
 export default function Layout({ children }) {
   return (

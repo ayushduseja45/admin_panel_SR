@@ -48,7 +48,7 @@ function Sidebar() {
           <div className="flex h-16 items-center px-4 border-b border-gray-200 dark:border-gray-700">
             <img
               className="h-8 w-auto"
-              src="/placeholder.svg?height=32&width=32"
+              src="image.png"
               alt="Your Company"
             />
           </div>

@@ -1,24 +1,34 @@
 import "./App.css";
 import Layout from "./Component/Layout";
 import { DarkModeProvider } from "./Context/ContextProvider";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Add this import
+
+// Import Profile component (You can create the Profile component as needed)
+import Profile from "./Component/Profilr";
 
 function App() {
   return (
-    <>
       <DarkModeProvider>
         <Layout>
-          {/* Add your main content here */}
-          <div className="rounded-lg bg-white dark:bg-gray-800 shadow p-4">
-            <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
-              Dashboard
-            </h1>
-            <p className="mt-1 text-gray-500 dark:text-gray-400">
-              Welcome to your dashboard
-            </p>
-          </div>
+          {/* Add routing for Dashboard and Profile */}
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <div className="rounded-lg bg-white dark:bg-gray-800 shadow p-4">
+                  <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
+                    Dashboard
+                  </h1>
+                  <p className="mt-1 text-gray-500 dark:text-gray-400">
+                    Welcome to your dashboard
+                  </p>
+                </div>
+              }
+            />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
         </Layout>
-      </DarkModeProvider>{" "}
-    </>
+      </DarkModeProvider>
   );
 }
 
