@@ -1,5 +1,7 @@
 import "./App.css";
 import Layout from "./Component/Layout";
+import Login from "./AuthPages/Login";
+import Register from "./AuthPages/Register";
 import { DarkModeProvider } from "./Context/ContextProvider";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Add this import
 
@@ -12,6 +14,8 @@ function App() {
         <Layout>
           {/* Add routing for Dashboard and Profile */}
           <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
             <Route
               path="/"
               element={
