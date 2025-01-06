@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Ad
 import Profile from "./Component/Profilr";
 import Dashboard from "./Component/Dashboard";
 import UsersPage from "./Component/User/UserPage";
+import LoanApplicants from "./Component/LoanApplicants/LoanApplicants";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/users" element={<UsersPage />} />
           <Route path="/home" element={<Dashboard />} />
-          
+
             <Route
               path="/"
               element={
