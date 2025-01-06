@@ -1,7 +1,7 @@
 import "./App.css";
 import Layout from "./Component/Layout";
-import Login from "./AuthPages/Login";
-import Register from "./AuthPages/Register";
+import Login from "./Component/AuthPages/Login";
+import Register from "./Component/AuthPages/Register";
 import { DarkModeProvider } from "./Context/ContextProvider";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Add this import
 
@@ -21,7 +21,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/users" element={<UsersPage />} />
           <Route path="/home" element={<Dashboard />} />
-
+          
             <Route
               path="/"
               element={
