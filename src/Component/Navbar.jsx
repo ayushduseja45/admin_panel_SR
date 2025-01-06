@@ -115,7 +115,7 @@ function Navbar() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo or Home */}
           <div className="flex items-center">
-            <Link to="/" className="text-lg font-semibold text-gray-900 dark:text-gray-200">
+            <Link to="/" className="text-lg font-semibold text-gray-900 dark:text-gray-200 p-5">
               AdminPanel
             </Link>
           </div>
