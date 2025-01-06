@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import GoogleButton from './GoogleAuth/GoogleButton';
 
 const Login = () => {
   return (
@@ -42,6 +43,7 @@ const Login = () => {
           <Link to="/register" className="text-indigo-600 hover:text-indigo-700 font-medium">Register as new admin</Link>
         </p>
       </div>
+      <GoogleButton/>
     </div>
   );
 };
