@@ -12,13 +12,15 @@ import UsersPage from "./Component/User/UserPage";
 import LoanApplicants from "./Component/LoanApplicants/LoanApplicants";
 import AdminRequests from "./Component/AdminRequests.jsx";
 
+export const BackendUrl = "http://localhost:8000/api/admin";
+
 function App() {
   return (
     <AuthProvider>
       <DarkModeProvider>
         <Routes>
           {/* Public routes (not wrapped in Layout) */}
-          <Route path="/login" element={<Login />}  />
+          <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
           {/* Protected routes wrapped in Layout */}
