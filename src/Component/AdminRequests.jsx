@@ -1,12 +1,26 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { BackendUrl } from "../App";
 
 const AdminRequests = () => {
+  const [admins, setAdmins] = useState([]);
+
+  useEffect(() => {
+    const getAdminsList = async () => {
+      try {
+        const res = await axios.get(`${BackendUrl}/admin_list`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        console.log(res.data);
+        setAdmins(res.data.adminList);
+      } catch (error) {}
+    };
+    getAdminsList();
+  }, []);
+
   // Initial Data for Admins
-  const [admins, setAdmins] = useState([
-    { id: 1, name: "Admin One", email: "admin1@example.com" },
-    { id: 2, name: "Admin Two", email: "admin2@example.com" },
-    { id: 3, name: "Admin Three", email: "admin3@example.com" },
-  ]);
 
   // Initial Data for Super Admins
   const [superAdmins, setSuperAdmins] = useState([]);
@@ -19,11 +33,16 @@ const AdminRequests = () => {
 
   // Handle Approve Action
   const handleApprove = (id) => {
-    const selectedAdmin = admins.find((admin) => admin.id === id);
-    if (selectedAdmin) {
-      setApprovedAdmins([...approvedAdmins, selectedAdmin]); // Add to Approved Admin list
-      setAdmins(admins.filter((admin) => admin.id !== id)); // Remove from Admin list
-    }
+    const acceptAdminRequest = async () => {
+      try {
+        const res = await axios.post(`${BackendUrl}/accept_admin`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        console.log(res.data);
+      } catch (error) {}
+    };
   };
 
   // Handle Delete Action
@@ -44,7 +63,9 @@ const AdminRequests = () => {
 
   // Handle Remove from Super Admins Action
   const handleRemoveSuperAdmin = (id) => {
-    const selectedSuperAdmin = superAdmins.find((superAdmin) => superAdmin.id === id);
+    const selectedSuperAdmin = superAdmins.find(
+      (superAdmin) => superAdmin.id === id
+    );
     if (selectedSuperAdmin) {
       setSuperAdmins(superAdmins.filter((superAdmin) => superAdmin.id !== id)); // Remove from Super Admin list
       setAdmins([...admins, selectedSuperAdmin]); // Add back to Admin list
@@ -66,9 +87,15 @@ const AdminRequests = () => {
         <table className="min-w-full bg-white border border-gray-200 rounded-lg">
           <thead>
             <tr className="bg-gray-100">
-              <th className="py-2 px-4 text-left font-semibold text-gray-700">Name</th>
-              <th className="py-2 px-4 text-left font-semibold text-gray-700">Email</th>
-              <th className="py-2 px-4 text-center font-semibold text-gray-700">Actions</th>
+              <th className="py-2 px-4 text-left font-semibold text-gray-700">
+                Name
+              </th>
+              <th className="py-2 px-4 text-left font-semibold text-gray-700">
+                Email
+              </th>
+              <th className="py-2 px-4 text-center font-semibold text-gray-700">
+                Actions
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -98,7 +125,9 @@ const AdminRequests = () => {
                     <div className="relative">
                       <button
                         onClick={() =>
-                          setDropdownOpen(dropdownOpen === admin.id ? null : admin.id)
+                          setDropdownOpen(
+                            dropdownOpen === admin.id ? null : admin.id
+                          )
                         }
                         className="bg-gray-200 px-2 py-1 rounded-full hover:bg-gray-300"
                       >
@@ -135,9 +164,15 @@ const AdminRequests = () => {
         <table className="min-w-full bg-white border border-gray-200 rounded-lg">
           <thead>
             <tr className="bg-gray-100">
-              <th className="py-2 px-4 text-left font-semibold text-gray-700">Name</th>
-              <th className="py-2 px-4 text-left font-semibold text-gray-700">Email</th>
-              <th className="py-2 px-4 text-center font-semibold text-gray-700">Actions</th>
+              <th className="py-2 px-4 text-left font-semibold text-gray-700">
+                Name
+              </th>
+              <th className="py-2 px-4 text-left font-semibold text-gray-700">
+                Email
+              </th>
+              <th className="py-2 px-4 text-center font-semibold text-gray-700">
+                Actions
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -174,9 +209,15 @@ const AdminRequests = () => {
         <table className="min-w-full bg-white border border-gray-200 rounded-lg">
           <thead>
             <tr className="bg-gray-100">
-              <th className="py-2 px-4 text-left font-semibold text-gray-700">Name</th>
-              <th className="py-2 px-4 text-left font-semibold text-gray-700">Email</th>
-              <th className="py-2 px-4 text-center font-semibold text-gray-700">Actions</th>
+              <th className="py-2 px-4 text-left font-semibold text-gray-700">
+                Name
+              </th>
+              <th className="py-2 px-4 text-left font-semibold text-gray-700">
+                Email
+              </th>
+              <th className="py-2 px-4 text-center font-semibold text-gray-700">
+                Actions
+              </th>
             </tr>
           </thead>
           <tbody>

@@ -13,6 +13,8 @@ import LoanApplicants from "./Component/LoanApplicants/LoanApplicants";
 import AdminRequests from "./Component/AdminRequests.jsx";
 import ApplicantDetails from "./Component/LoanApplicants/ApplicantDetails.jsx";
 
+export const BackendUrl = "http://localhost:8000/api/admin";
+
 function App() {
   return (
     <AuthProvider>
