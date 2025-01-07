@@ -1,9 +1,11 @@
-// src/components/GoogleButton.jsx
-import React from 'react';
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import app from '../../../firebase-config.js'; // Import your Firebase app
+import React from "react";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import app from "../../../firebase-config.js"; // Import your Firebase app
 
 const GoogleButton = () => {
+  const navigate = useNavigate();
+
   const handleGoogleSignIn = async () => {
     const auth = getAuth(app); // Use the initialized app here
     const provider = new GoogleAuthProvider();
@@ -12,10 +14,11 @@ const GoogleButton = () => {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
 
-      console.log('User signed in:', user);
-      // Handle user data here (e.g., save it to your backend or state management)
+      console.log("User signed in:", user);
+      // Redirect to the home page after successful sign-in
+      navigate("/home");
     } catch (error) {
-      console.error('Error during Google sign-in:', error);
+      console.error("Error during Google sign-in:", error);
     }
   };
 
