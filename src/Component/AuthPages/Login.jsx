@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import GoogleButton from "../AuthPages/GoogleAuth/GoogleButton.jsx";
-import { use } from "react";
+import axios  from "axios";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -9,18 +9,32 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Simulate login logic (replace this with your actual authentication logic)
-    if (username === "admin" && password === "password") {
-      // Clear error if login is successful
-      setError("");
-      // Redirect to home page
-      navigate("/home");
-    } else {
-      // Set error message if login fails
-      setError("Invalid username or password.");
+    try {
+      // API call to the backend for authentication
+      const response = await axios.post("http://your-backend-url/api/login", {
+        username,
+        password,
+      });
+
+      if (response.data.success) {
+        // Login successful, save user details in localStorage (if needed)
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("username", response.data.username); // optional
+
+        // Redirect to home page
+        navigate("/home");
+      } else {
+        // Handle login failure
+        setError(response.data.message || "Invalid username or password.");
+      }
+    } catch (error) {
+      // Handle server or network errors
+      setError(
+        error.response?.data?.message || "An error occurred. Please try again."
+      );
     }
   };
 

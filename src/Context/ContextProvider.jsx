@@ -3,11 +3,13 @@ import { createContext, useContext, useEffect, useState } from "react";
 const DarkModeContext = createContext();
 
 export function DarkModeProvider({ children }) {
+  // Retrieve the saved mode from localStorage or default to false
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const savedMode = localStorage.getItem("darkMode");
     return savedMode ? JSON.parse(savedMode) : false;
   });
 
+  // Update localStorage and apply the dark mode class to the document
   useEffect(() => {
     localStorage.setItem("darkMode", JSON.stringify(isDarkMode));
     if (isDarkMode) {
@@ -17,6 +19,7 @@ export function DarkModeProvider({ children }) {
     }
   }, [isDarkMode]);
 
+  // Toggle dark mode state
   const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
 
   return (
