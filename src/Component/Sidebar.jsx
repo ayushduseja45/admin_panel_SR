@@ -16,6 +16,8 @@ const navigation = [
   { name: "Loan Applications", icon: FolderIcon, current: false },
   { name: "Calendar", icon: CalendarIcon, current: false },
   { name: "Documents", icon: DocumentIcon, current: false },
+  { name: "Request Admin", icon: ChartBarIcon, current: false },
+
 ];
 
 const teams = [
@@ -117,6 +119,8 @@ function Sidebar() {
               Settings
             </Link>
           </div>
+
+          
         </div>
       </div>
     </>

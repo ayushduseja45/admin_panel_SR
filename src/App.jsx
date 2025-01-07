@@ -10,6 +10,7 @@ import Profile from "./Component/Profilr.jsx";
 import Dashboard from "./Component/Dashboard";
 import UsersPage from "./Component/User/UserPage";
 import LoanApplicants from "./Component/LoanApplicants/LoanApplicants";
+import AdminRequests from "./Component/AdminRequests.jsx";
 
 function App() {
   return (
@@ -64,6 +65,14 @@ function App() {
                     element={
                       <ProtectedRoute>
                         <Dashboard />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/request-admin"
+                    element={
+                      <ProtectedRoute>
+                        <AdminRequests />
                       </ProtectedRoute>
                     }
                   />
