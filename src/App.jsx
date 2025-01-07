@@ -11,6 +11,7 @@ import Dashboard from "./Component/Dashboard";
 import UsersPage from "./Component/User/UserPage";
 import LoanApplicants from "./Component/LoanApplicants/LoanApplicants";
 import AdminRequests from "./Component/AdminRequests.jsx";
+import ApplicantDetails from "./Component/LoanApplicants/ApplicantDetails.jsx";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
       <DarkModeProvider>
         <Routes>
           {/* Public routes (not wrapped in Layout) */}
-          <Route path="/login" element={<Login />}  />
+          <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
           {/* Protected routes wrapped in Layout */}
@@ -73,6 +74,14 @@ function App() {
                     element={
                       <ProtectedRoute>
                         <AdminRequests />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/loan-applications/:id"
+                    element={
+                      <ProtectedRoute>
+                        <ApplicantDetails />
                       </ProtectedRoute>
                     }
                   />
