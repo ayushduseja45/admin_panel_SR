@@ -38,6 +38,14 @@ function App() {
               }
             />
             <Route
+              path="/loan-applications"
+              element={
+                <ProtectedRoute>
+                  <LoanApplicants />
+                </ProtectedRoute>
+              }
+            />
+            <Route
               path="/profile"
               element={
                 <ProtectedRoute>
