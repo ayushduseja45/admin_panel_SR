@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const UserCard = ({ user, index }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -15,7 +15,7 @@ const UserCard = ({ user, index }) => {
           <p className="text-gray-500 dark:text-gray-400">{user.email}</p>
         </div>
         <button className="text-sm text-blue-600 dark:text-blue-400">
-          {isExpanded ? 'Hide Details' : 'View Details'}
+          {isExpanded ? "Hide Details" : "View Details"}
         </button>
       </div>
       {isExpanded && (

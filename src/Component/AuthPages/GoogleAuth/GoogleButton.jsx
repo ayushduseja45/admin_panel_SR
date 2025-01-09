@@ -2,6 +2,7 @@ import React from "react";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import app from "../../../firebase-config.js"; // Import your Firebase app
+import { getToken } from "firebase/app-check";
 
 const GoogleButton = () => {
   const navigate = useNavigate();
@@ -9,6 +10,8 @@ const GoogleButton = () => {
   const handleGoogleSignIn = async () => {
     const auth = getAuth(app); // Use the initialized app here
     const provider = new GoogleAuthProvider();
+    
+
 
     try {
       const result = await signInWithPopup(auth, provider);
@@ -16,6 +19,8 @@ const GoogleButton = () => {
 
       console.log("User signed in:", user);
       // Redirect to the home page after successful sign-in
+      localStorage.setItem("token", user.accessToken);
+      
       navigate("/home");
     } catch (error) {
       console.error("Error during Google sign-in:", error);

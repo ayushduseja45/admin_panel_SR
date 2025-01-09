@@ -15,7 +15,23 @@ function Navbar() {
 
   useEffect(() => {
     const auth = getAuth(app); // Initialize auth instance
-    setUser(auth.currentUser); // Set the authenticated user
+    const currentUser = auth.currentUser;
+
+    if (currentUser) {
+      // Save user data in localStorage
+      const userData = {
+        displayName: currentUser.displayName,
+        photoURL: currentUser.photoURL,
+      };
+      localStorage.setItem("user", JSON.stringify(userData));
+      setUser(userData);
+    } else {
+      // Retrieve user data from localStorage if it exists
+      const savedUser = localStorage.getItem("user");
+      if (savedUser) {
+        setUser(JSON.parse(savedUser));
+      }
+    }
 
     // Close the dropdown if click occurs outside
     const handleClickOutside = (event) => {
@@ -40,6 +56,9 @@ function Navbar() {
     try {
       await signOut(auth);
       console.log("User signed out successfully.");
+      // Clear user data from localStorage
+      localStorage.removeItem("user");
+      setUser(null); // Reset user state
       // Redirect to login or any other page after logout
       navigate("/login");
     } catch (error) {
