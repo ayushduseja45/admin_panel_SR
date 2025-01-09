@@ -173,7 +173,7 @@ const Dashboard = () => {
             Active Sessions
           </h3>
           <p className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
-            {stats?.activeSessions ?? "N/A"}
+            {stats?.totalApplications ?? "N/A"}
           </p>
         </div>
         <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
@@ -181,15 +181,15 @@ const Dashboard = () => {
             Pending Requests
           </h3>
           <p className="text-2xl font-bold text-red-600 dark:text-red-400">
-            {stats?.pendingRequests ?? "N/A"}
+            {stats?.totalPendingApplications ?? "N/A"}
           </p>
         </div>
         <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
           <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300">
-            Revenue
+            Total Admins
           </h3>
           <p className="text-2xl font-bold text-green-600 dark:text-green-400">
-            {stats?.revenue ? `$${stats.revenue}` : "N/A"}
+            {stats?.totalAdmins ?? "N/A"}
           </p>
         </div>
       </div>
